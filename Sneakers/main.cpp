@@ -7,24 +7,62 @@ public:
     string name;
     int size;
     string color;
+
+    void setDetails(string newName, int newSize, string newColor) {
+        name = newName;
+        size = newSize;
+        color = newColor;
+    }
+
+    string getDescription() const {
+        return "Sneaker: " + name + ", Size: " + to_string(size) + ", Color: " + color;
+    }
+
+    void updateSize(int newSize) {
+        size = newSize;
+    }
+
+    void printDetails() const {
+        cout << getDescription() << endl;
+    }
 };
 
 class SneakerBrand {
 public:
     string brandName;
+
+    void setBrandName(string newBrandName) {
+        brandName = newBrandName;
+    }
+
+    string getBrandName() const {
+        return brandName;
+    }
+
+    void printBrandInfo() const {
+        cout << "Brand: " << brandName << endl;
+    }
+
+    void renameBrand(string newBrandName) {
+        brandName = newBrandName;
+    }
 };
 
 int main() {
     Sneaker mySneaker;
-    mySneaker.name = "Air Max";
-    mySneaker.size = 10;
-    mySneaker.color = "Red";
+    mySneaker.setDetails("Air Max", 10, "Red");
 
     SneakerBrand myBrand;
-    myBrand.brandName = "Nike";
+    myBrand.setBrandName("Nike");
 
-    cout << "Sneaker: " << mySneaker.name << ", Size: " << mySneaker.size << ", Color: " << mySneaker.color << endl;
-    cout << "Brand: " << myBrand.brandName << endl;
+    mySneaker.printDetails();
+    myBrand.printBrandInfo();
+
+    mySneaker.updateSize(11);
+    mySneaker.printDetails();
+
+    myBrand.renameBrand("Adidas");
+    myBrand.printBrandInfo();
 
     return 0;
 }
