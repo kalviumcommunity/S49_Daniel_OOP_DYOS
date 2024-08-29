@@ -49,6 +49,7 @@ public:
 };
 
 int main() {
+    
     Sneaker mySneaker;
     mySneaker.setDetails("Air Max", 10, "Red");
 
