@@ -22,7 +22,7 @@ public:
         this->size = newSize;
     }
 
-    void printDetails(){
+    void printDetails() const {
         cout << getDescription() << endl;
     }
 };
@@ -39,7 +39,7 @@ public:
         return brandName;
     }
 
-    void printBrandInfo() {
+    void printBrandInfo() const {
         cout << "Brand: " << brandName << endl;
     }
 
@@ -49,27 +49,25 @@ public:
 };
 
 int main() {
-    Sneaker mySneaker;
-    mySneaker.setDetails("Air Max", 10, "Red");
+    Sneaker sneakers[3];
+    sneakers[0].setDetails("Air Max", 10, "Red");
+    sneakers[1].setDetails("Ultra Boost", 9, "Black");
+    sneakers[2].setDetails("Gel Kayano", 11, "Blue");
 
-    SneakerBrand myBrand;
-    myBrand.setBrandName("Nike");
+    SneakerBrand brands[3];
+    brands[0].setBrandName("Nike");
+    brands[1].setBrandName("Adidas");
+    brands[2].setBrandName("Asics");
 
-    mySneaker.printDetails();
-    myBrand.printBrandInfo();
+    cout << "Sneaker Details:" << endl;
+    for (int i = 0; i < 3; ++i) {
+        sneakers[i].printDetails();
+    }
 
-    mySneaker.updateSize(11);
-    mySneaker.printDetails();
-
-    myBrand.renameBrand("Adidas");
-    myBrand.printBrandInfo();
+    cout << "\nSneaker Brand Info:" << endl;
+    for (int i = 0; i < 3; ++i) {
+        brands[i].printBrandInfo();
+    }
 
     return 0;
 }
-
-
-
-
-
-
-
