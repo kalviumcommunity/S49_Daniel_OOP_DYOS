@@ -9,9 +9,9 @@ public:
     string color;
 
     void setDetails(string newName, int newSize, string newColor) {
-        name = newName;
-        size = newSize;
-        color = newColor;
+        this->name = newName;
+        this->size = newSize;
+        this->color = newColor;
     }
 
     string getDescription() const {
@@ -19,10 +19,10 @@ public:
     }
 
     void updateSize(int newSize) {
-        size = newSize;
+        this->size = newSize;
     }
 
-    void printDetails() const {
+    void printDetails(){
         cout << getDescription() << endl;
     }
 };
@@ -32,19 +32,19 @@ public:
     string brandName;
 
     void setBrandName(string newBrandName) {
-        brandName = newBrandName;
+        this->brandName = newBrandName;
     }
 
     string getBrandName() const {
         return brandName;
     }
 
-    void printBrandInfo() const {
+    void printBrandInfo() {
         cout << "Brand: " << brandName << endl;
     }
 
     void renameBrand(string newBrandName) {
-        brandName = newBrandName;
+        this->brandName = newBrandName;
     }
 };
 
@@ -59,7 +59,6 @@ int main() {
     myBrand.printBrandInfo();
 
     mySneaker.updateSize(11);
-    mySneaker.updateColor("Blue");
     mySneaker.printDetails();
 
     myBrand.renameBrand("Adidas");
@@ -67,3 +66,10 @@ int main() {
 
     return 0;
 }
+
+
+
+
+
+
+
