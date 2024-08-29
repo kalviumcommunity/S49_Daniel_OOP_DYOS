@@ -44,7 +44,9 @@ public:
         return brandName;
     }
 
+
     void printBrandInfo() {
+
     void printBrandInfo() const {
         cout << "Brand: " << brandName << endl;
     }
@@ -56,6 +58,26 @@ public:
 };
 
 int main() {
+
+    Sneaker sneakers[3];
+    sneakers[0].setDetails("Air Max", 10, "Red");
+    sneakers[1].setDetails("Ultra Boost", 9, "Black");
+    sneakers[2].setDetails("Gel Kayano", 11, "Blue");
+
+    SneakerBrand brands[3];
+    brands[0].setBrandName("Nike");
+    brands[1].setBrandName("Adidas");
+    brands[2].setBrandName("Asics");
+
+    cout << "Sneaker Details:" << endl;
+    for (int i = 0; i < 3; ++i) {
+        sneakers[i].printDetails();
+    }
+
+    cout << "\nSneaker Brand Info:" << endl;
+    for (int i = 0; i < 3; ++i) {
+        brands[i].printBrandInfo();
+    }
     
     Sneaker mySneaker;
     mySneaker.setDetails("Air Max", 10, "Red");
@@ -79,10 +101,3 @@ int main() {
 
     return 0;
 }
-
-
-
-
-
-
-
