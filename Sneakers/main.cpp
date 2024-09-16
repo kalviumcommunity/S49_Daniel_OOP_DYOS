@@ -49,12 +49,12 @@ public:
 };
 
 int main() {
-    Sneaker sneakers[3];
+    Sneaker* sneakers = new Sneaker[3];
     sneakers[0].setDetails("Air Max", 10, "Red");
     sneakers[1].setDetails("Ultra Boost", 9, "Black");
     sneakers[2].setDetails("Gel Kayano", 11, "Blue");
 
-    SneakerBrand brands[3];
+    SneakerBrand* brands = new SneakerBrand[3];
     brands[0].setBrandName("Nike");
     brands[1].setBrandName("Adidas");
     brands[2].setBrandName("Asics");
@@ -68,6 +68,9 @@ int main() {
     for (int i = 0; i < 3; ++i) {
         brands[i].printBrandInfo();
     }
+
+    delete[] sneakers;
+    delete[] brands;
 
     return 0;
 }
