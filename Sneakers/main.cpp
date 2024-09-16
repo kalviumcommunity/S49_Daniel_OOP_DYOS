@@ -25,6 +25,10 @@ public:
         this->size = newSize;
     }
 
+    void printDetails(){
+        size = newSize;
+    }
+
     void printDetails() const {
         cout << getDescription() << endl;
     }
@@ -44,12 +48,19 @@ public:
 
     void setBrandName(string newBrandName) {
         this->brandName = newBrandName;
+
         brandCount++;
+
+        brandName = newBrandName;
+
     }
 
     string getBrandName() const {
         return brandName;
     }
+
+
+    void printBrandInfo() {
 
     void printBrandInfo() const {
         cout << "Brand: " << brandName << endl;
@@ -57,6 +68,7 @@ public:
 
     void renameBrand(string newBrandName) {
         this->brandName = newBrandName;
+        brandName = newBrandName;
     }
 
     static int getBrandCount() {
@@ -67,8 +79,13 @@ public:
 int SneakerBrand::brandCount = 0;
 
 int main() {
+
     Sneaker* sneakers = new Sneaker[3];
-    
+
+
+    Sneaker sneakers[3];
+
+
     sneakers[0].setDetails("Air Max", 10, "Red");
     sneakers[1].setDetails("Ultra Boost", 9, "Black");
     sneakers[2].setDetails("Gel Kayano", 11, "Blue");
@@ -88,6 +105,26 @@ int main() {
     for (int i = 0; i < 3; ++i) {
         brands[i].printBrandInfo();
     }
+    
+    Sneaker mySneaker;
+    mySneaker.setDetails("Air Max", 10, "Red");
+
+    SneakerBrand myBrand;
+    myBrand.setBrandName("Nike");
+
+    mySneaker.printDetails();
+    myBrand.printBrandInfo();
+
+    mySneaker.updateSize(11);
+    mySneaker.printDetails();
+
+
+
+    mySneaker.updateSize(11);
+    mySneaker.printDetails();
+
+    myBrand.renameBrand("Adidas");
+    myBrand.printBrandInfo();
 
     cout << "\nTotal Sneakers: " << Sneaker::getSneakerCount() << endl;
     cout << "Total Brands: " << SneakerBrand::getBrandCount() << endl;
