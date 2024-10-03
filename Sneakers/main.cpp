@@ -112,15 +112,19 @@ int main() {
 
     Sneaker* sneakers = new Sneaker[3];
 
+    SneakerBrand* brands = new SneakerBrand[3];
+    
+    sneakers[0].setDetails("Dunks", 10, "Red");
+
+
 
     Sneaker sneakers[3];
 
 
     sneakers[0].setDetails("Air Max", 10, "Red");
+
     sneakers[1].setDetails("Ultra Boost", 9, "Black");
     sneakers[2].setDetails("Gel Kayano", 11, "Blue");
-
-    SneakerBrand* brands = new SneakerBrand[3];
 
     brands[0].setBrandName("Nike");
     brands[1].setBrandName("Adidas");
