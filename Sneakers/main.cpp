@@ -3,26 +3,47 @@
 using namespace std;
 
 class Sneaker {
-public:
+private:
     string name;
     int size;
     string color;
 
+public:
     static int sneakerCount;
 
-    void setDetails(string newName, int newSize, string newColor) {
+    void setName(string newName) {
         this->name = newName;
+    }
+
+    void setSize(int newSize) {
         this->size = newSize;
+    }
+
+    void setColor(string newColor) {
         this->color = newColor;
+    }
+
+    void setDetails(string newName, int newSize, string newColor) {
+        setName(newName);
+        setSize(newSize);
+        setColor(newColor);
         sneakerCount++;
     }
 
-    string getDescription() const {
-        return "Sneaker: " + name + ", Size: " + to_string(size) + ", Color: " + color;
+    string getName() const {
+        return name;
     }
 
-    void updateSize(int newSize) {
-        this->size = newSize;
+    int getSize() const {
+        return size;
+    }
+
+    string getColor() const {
+        return color;
+    }
+
+    string getDescription() const {
+        return "Sneaker: " + getName() + ", Size: " + to_string(getSize()) + ", Color: " + getColor();
     }
 
     void printDetails() const {
@@ -37,9 +58,10 @@ public:
 int Sneaker::sneakerCount = 0;
 
 class SneakerBrand {
-public:
+private:
     string brandName;
 
+public:
     static int brandCount;
 
     void setBrandName(string newBrandName) {
@@ -47,16 +69,16 @@ public:
         brandCount++;
     }
 
+    void renameBrand(string newBrandName) {
+        setBrandName(newBrandName);
+    }
+
     string getBrandName() const {
         return brandName;
     }
 
     void printBrandInfo() const {
-        cout << "Brand: " << brandName << endl;
-    }
-
-    void renameBrand(string newBrandName) {
-        this->brandName = newBrandName;
+        cout << "Brand: " << getBrandName() << endl;
     }
 
     static int getBrandCount() {
