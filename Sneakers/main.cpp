@@ -11,39 +11,17 @@ private:
 public:
     static int sneakerCount;
 
-    void setName(string newName) {
-        this->name = newName;
-    }
+    Sneaker() {}
 
-    void setSize(int newSize) {
-        this->size = newSize;
-    }
-
-    void setColor(string newColor) {
-        this->color = newColor;
-    }
-
-    void setDetails(string newName, int newSize, string newColor) {
-        setName(newName);
-        setSize(newSize);
-        setColor(newColor);
+    Sneaker(string name, int size, string color) {
+        this->name = name;
+        this->size = size;
+        this->color = color;
         sneakerCount++;
     }
 
-    string getName() const {
-        return name;
-    }
-
-    int getSize() const {
-        return size;
-    }
-
-    string getColor() const {
-        return color;
-    }
-
-    string getDescription() const {
-        return "Sneaker: " + getName() + ", Size: " + to_string(getSize()) + ", Color: " + getColor();
+    ~Sneaker() {
+        sneakerCount--;
     }
 
     void printDetails(){
@@ -51,7 +29,7 @@ public:
     }
 
     void printDetails() const {
-        cout << getDescription() << endl;
+        cout << "Sneaker: " << name << ", Size: " << size << ", Color: " << color << endl;
     }
 
     static int getSneakerCount() {
@@ -68,6 +46,9 @@ private:
 public:
     static int brandCount;
 
+
+    SneakerBrand() {}
+
     void setBrandName(string newBrandName) {
         this->brandName = newBrandName;
 
@@ -77,18 +58,22 @@ public:
 
     }
 
-    void renameBrand(string newBrandName) {
-        setBrandName(newBrandName);
+    SneakerBrand(string brandName) {
+        this->brandName = brandName;
+        brandCount++;
     }
 
-    string getBrandName() const {
-        return brandName;
+    ~SneakerBrand() {
+        brandCount--;
     }
 
 
     void printBrandInfo() {
 
     void printBrandInfo() const {
+
+        cout << "Brand: " << brandName << endl;
+
 
         cout << "Brand: " << getBrandName() << endl;
 
@@ -98,6 +83,7 @@ public:
     void renameBrand(string newBrandName) {
         this->brandName = newBrandName;
         brandName = newBrandName;
+
 
     }
 
@@ -109,6 +95,19 @@ public:
 int SneakerBrand::brandCount = 0;
 
 int main() {
+
+    Sneaker sneakers[3] = {
+        Sneaker("Dunks", 10, "Red"),
+        Sneaker("Ultra Boost", 9, "Black"),
+        Sneaker("Gel Kayano", 11, "Blue")
+    };
+
+    SneakerBrand brands[3] = {
+        SneakerBrand("Nike"),
+        SneakerBrand("Adidas"),
+        SneakerBrand("Asics")
+    };
+
 
     Sneaker* sneakers = new Sneaker[3];
 
@@ -129,6 +128,7 @@ int main() {
     brands[0].setBrandName("Nike");
     brands[1].setBrandName("Adidas");
     brands[2].setBrandName("Asics");
+
 
     cout << "Sneaker Details:" << endl;
     for (int i = 0; i < 3; ++i) {
@@ -162,9 +162,6 @@ int main() {
 
     cout << "\nTotal Sneakers: " << Sneaker::getSneakerCount() << endl;
     cout << "Total Brands: " << SneakerBrand::getBrandCount() << endl;
-
-    delete[] sneakers;
-    delete[] brands;
 
     return 0;
 }
