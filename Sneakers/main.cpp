@@ -137,10 +137,7 @@ int main() {
         sneakers[i].printDetails();
     }
 
-    cout << "\nSneaker Brand Info:" << endl;
-    for (int i = 0; i < 3; ++i) {
-        brands[i].printBrandInfo();
-    }
+
 
     cout << "\nTotal Sneakers: " << Sneaker::getSneakerCount() << endl;
     cout << "Total Brands: " << SneakerBrand::getBrandCount() << endl;
