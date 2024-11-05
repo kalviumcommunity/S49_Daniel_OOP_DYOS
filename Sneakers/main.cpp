@@ -230,6 +230,7 @@ int main() {
     myBrand.renameBrand("Adidas");
     myBrand.printBrandInfo();
 
+
     cout << "\nTotal Sneakers: " << Sneaker::getSneakerCount() << endl;
     cout << "Total Brands: " << SneakerBrand::getBrandCount() << endl;
 
