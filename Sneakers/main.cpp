@@ -12,15 +12,9 @@ protected:
 public:
     Footwear() {}
 
-    Footwear(string name, int size, string color) {
-        this->name = name;
-        this->size = size;
-        this->color = color;
-    }
+    Footwear(string name, int size, string color) : name(name), size(size), color(color) {}
 
-    virtual void printDetails() const {
-        cout << "Footwear: " << name << ", Size: " << size << ", Color: " << color << endl;
-    }
+    virtual void printDetails() const = 0;  // Pure virtual function making this class abstract
 
     string getName() const {
         return name;
@@ -36,17 +30,15 @@ public:
 
     SneakerBrand() {}
 
-    SneakerBrand(string brandName) {
-        this->brandName = brandName;
+    SneakerBrand(string brandName) : brandName(brandName) {
+        brandCount++;
     }
 
-    ~SneakerBrand() {
+    virtual ~SneakerBrand() {
         brandCount--;
     }
 
-    void printBrandInfo() const {
-        cout << "Brand: " << brandName << endl;
-    }
+    virtual void printBrandInfo() const = 0;  // Pure virtual function making this class abstract
 
     static int getBrandCount() {
         return brandCount;
@@ -67,15 +59,18 @@ public:
 
     Sneaker(string name, int size, string color, string brandName) : Footwear(name, size, color), SneakerBrand(brandName) {
         sneakerCount++;
-        brandCount++;
     }
 
     ~Sneaker() {
         sneakerCount--;
     }
 
-    void printDetails() {
+    void printDetails() const override {
         cout << "Sneaker: " << name << ", Size: " << size << ", Color: " << color << ", Brand: " << getBrandName() << endl;
+    }
+
+    void printBrandInfo() const override {
+        cout << "Brand: " << getBrandName() << endl;
     }
 
     static int getSneakerCount() {
@@ -86,23 +81,28 @@ public:
 int Sneaker::sneakerCount = 0;
 
 class SportShoe : public Footwear {
-public:
+private:
     string sportType;
 
-    SportShoe(string name, int size, string color, string sportType) : Footwear(name, size, color) {
-        this->sportType = sportType;
-    }
+public:
+    SportShoe(string name, int size, string color, string sportType) : Footwear(name, size, color), sportType(sportType) {}
 
-    void printDetails() {
+    void printDetails() const override {
         cout << "Sport Shoe: " << name << ", Size: " << size << ", Color: " << color << ", Sport Type: " << sportType << endl;
     }
 };
 
 int main() {
-    Footwear footwear[2] = {
-        Footwear("Loafers", 9, "Brown"),
-        Footwear("Flip Flops", 8, "Green")
+    SportShoe sportShoes[2] = {
+        SportShoe("Running Shoes", 10, "Black", "Running"),
+        SportShoe("Basketball Shoes", 12, "White", "Basketball")
     };
+
+    cout << "Sport Shoe Details:" << endl;
+    for (int i = 0; i < 2; ++i) {
+        sportShoes[i].printDetails();
+    }    
+    cout << endl;
 
     Sneaker sneakers[3] = {
         Sneaker("Dunks", 10, "Red", "Nike"),
@@ -110,34 +110,10 @@ int main() {
         Sneaker("Gel Kayano", 11, "Blue", "Asics")
     };
 
-    SneakerBrand brands[3] = {
-        SneakerBrand("Nike"),
-        SneakerBrand("Adidas"),
-        SneakerBrand("Asics")
-    };
-
-    SportShoe sportShoes[2] = {
-        SportShoe("Running Shoes", 10, "Black", "Running"),
-        SportShoe("Basketball Shoes", 12, "White", "Basketball")
-    };
-
-    cout << "Sport Shoe Details: " << endl;
-    for (int i = 0; i < 2; ++i) {
-        sportShoes[i].printDetails();
-    }    
-    cout<<endl;
-
-    cout << "Footwear Details:" << endl;
-    for (int i = 0; i < 2; ++i) {
-        footwear[i].printDetails();
-    }
-
-    cout << "\nSneaker Details:" << endl;
+    cout << "Sneaker Details:" << endl;
     for (int i = 0; i < 3; ++i) {
         sneakers[i].printDetails();
     }
-
-
 
     cout << "\nTotal Sneakers: " << Sneaker::getSneakerCount() << endl;
     cout << "Total Brands: " << SneakerBrand::getBrandCount() << endl;
