@@ -4,8 +4,10 @@
 using namespace std;
 
 
-//Here Footwear is an abstract class and every class represents it's single responsibility Principle
+//every class represents it's single responsibility Principle
 class Footwear {
+    //Here abstract class Footwear is OPEN for getting inherited
+    //Closed for modification
 protected:
     string name;
     int size;
@@ -54,6 +56,7 @@ public:
 int SneakerBrand::brandCount = 0;
 
 class Sneaker : public Footwear, public SneakerBrand {
+    //footwear inherited here and virtual function of abstract class can be accessed
 public:
     static int sneakerCount;
 
@@ -83,6 +86,7 @@ public:
 int Sneaker::sneakerCount = 0;
 
 class SportShoe : public Footwear {
+    //footwear inherited here and virtual function of abstract class can be accessed
 private:
     string sportType;
 
