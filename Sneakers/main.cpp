@@ -3,6 +3,8 @@
 
 using namespace std;
 
+
+//Here Footwear is an abstract class and every class represents it's single responsibility Principle
 class Footwear {
 protected:
     string name;
@@ -68,6 +70,7 @@ public:
     virtual void printBrandInfo() const = 0;  
 
 
+
     void printBrandInfo() {
 
     void printBrandInfo() const {
@@ -86,6 +89,7 @@ public:
 
 
     }
+
 
 
     static int getBrandCount() {
