@@ -5,6 +5,9 @@ using namespace std;
 
 
 //every class represents it's single responsibility Principle
+
+//For each class there are only neccessary and related methods if there are any non-neccessary methods then it voilates interface segregation principle
+
 class Footwear {
     //Here abstract class Footwear is OPEN for getting inherited
     //Closed for modification
